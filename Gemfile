@@ -62,5 +62,7 @@ end
 gem 'cssbundling-rails', '~> 1.4'
 
 gem 'faker'
-gem 'annotate'gem 'hamlit'
-
+gem 'annotate'
+gem 'hamlit'
+gem 'better_errors'
+gem 'binding_of_caller'
