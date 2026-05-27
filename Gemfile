@@ -62,3 +62,4 @@ gem "cssbundling-rails", "~> 1.4"
 
 gem 'faker'
 gem 'hamlit'
+gem 'annotate'
