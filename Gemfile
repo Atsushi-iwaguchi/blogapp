@@ -49,8 +49,8 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'erb2haml'
-  gem 'web-console'
   gem 'rubocop-rails'
+  gem 'web-console'
 end
 
 group :test do
@@ -61,8 +61,9 @@ end
 
 gem 'cssbundling-rails', '~> 1.4'
 
-gem 'faker'
 gem 'annotate'
-gem 'hamlit'
 gem 'better_errors'
 gem 'binding_of_caller'
+gem 'devise'
+gem 'faker'
+gem 'hamlit'
