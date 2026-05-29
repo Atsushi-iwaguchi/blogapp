@@ -7,8 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-10.times do
-    Article.create(
+
+jon = User.create!(email: 'jojp@exampple.com', password: 'password')
+emily = User.create!(email: 'emily@exampple.com', password: 'password')
+
+5.times do
+    jon.articles.create(
+        title: Faker::Lorem.sentence(word_count: 5),
+        content: Faker::Lorem.sentence(word_count: 100)
+    )
+end
+
+5.times do
+    emily.articles.create(
         title: Faker::Lorem.sentence(word_count: 5),
         content: Faker::Lorem.sentence(word_count: 100)
     )
