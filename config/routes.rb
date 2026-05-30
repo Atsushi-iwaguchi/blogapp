@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root to: 'articles#index'
 
   resources :articles do
-    resources :comments, only: [:new, :create]
+    resources :comments, only: [ :new, :create ]
   end
   # root "posts#index"e
 end
