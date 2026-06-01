@@ -17,4 +17,6 @@ Rails.application.routes.draw do
     resources :comments, only: [ :new, :create ]
   end
   # root "posts#index"e
+
+  resource :profile, only: [ :show, :edit, :update ]
 end
