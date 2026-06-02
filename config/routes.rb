@@ -20,8 +20,9 @@ Rails.application.routes.draw do
   end
   # root "posts#index"e
 
-  resources :accounts, only: [:show] do
-    resources :follows, only: [:create]
+  resources :accounts, only: [ :show ] do
+    resources :follows, only: [ :create ]
+    resources :unfollows, only: [ :create ]
   end
 
   resource :profile, only: [ :show, :edit, :update ]
