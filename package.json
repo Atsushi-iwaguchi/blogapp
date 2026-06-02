@@ -12,6 +12,9 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.23",
-    "sass": "^1.100.0"
+    "@rails/actiontext": "^8.1.300",
+    "@rails/webpacker": "^5.4.4",
+    "sass": "^1.100.0",
+    "trix": "^2.1.19"
   }
 }
