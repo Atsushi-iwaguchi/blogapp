@@ -25,16 +25,4 @@ class Article < ApplicationRecord
     has_many :comments
     has_many :likes, dependent: :destroy
     belongs_to :user, dependent: :destroy
-
-    def display_created_at
-        I18n.l(self.created_at, format: :default)
-    end
-
-    def author_name
-        user.display_name
-    end
-
-    def like_count
-        likes.count
-    end
 end

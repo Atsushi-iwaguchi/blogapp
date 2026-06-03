@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to: 'articles#index'
+  resource :timeline, only: [:show]
 
   resources :articles do
     resources :comments, only: [ :new, :create ]
@@ -19,6 +20,11 @@ Rails.application.routes.draw do
     resource :like, only: [ :create, :destroy ]
   end
   # root "posts#index"e
+
+  resources :accounts, only: [ :show ] do
+    resources :follows, only: [ :create ]
+    resources :unfollows, only: [ :create ]
+  end
 
   resource :profile, only: [ :show, :edit, :update ]
   resources :favorites, only: [ :index ]
