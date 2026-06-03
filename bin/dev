@@ -1,8 +1,10 @@
 #!/usr/bin/env sh
 set -e
 
-# Rails server
-./bin/rails server &
+if ! command -v foreman >/dev/null; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
 
-# esbuild watcher (npm版)
-npm run build -- --watch
+exec foreman start -f Procfile.dev
+
