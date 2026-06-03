@@ -63,6 +63,7 @@ gem 'cssbundling-rails', '~> 1.4'
 
 gem 'annotate'
 gem 'active_decorator'
+gem 'active_model_serializers'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'devise'
