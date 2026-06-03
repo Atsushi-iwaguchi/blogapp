@@ -43,11 +43,7 @@ class User < ApplicationRecord
   def has_linked?(article)
     likes.exists?(article_id: article.id)
   end
-
-  def display_name
-    profile&.nickname || self.email.split('@').first
-  end
-
+  
   def follow!(user)
     user_id = get_user_id(user)
     following_relationships.create!(following_id: user_id)
@@ -67,13 +63,7 @@ class User < ApplicationRecord
     profile || build_profile
   end
 
-  def avatar_image
-    if profile&.avatar&.attached?
-      profile.avatar
-    else
-      'default-avatar.png'
-    end
-  end
+
 
   private
   def get_user_id(user)
