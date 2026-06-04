@@ -12,12 +12,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to: 'articles#index'
-  resource :timeline, only: [:show]
+  resource :timeline, only: [ :show ]
 
   resources :articles do
-    resources :comments, only: [ :new, :create ]
+    resources :comments, only: [ :index, :new, :create ]
 
-    resource :like, only: [ :create, :destroy ]
+    resource :like, only: [ :show, :create, :destroy ]
   end
   # root "posts#index"e
 
