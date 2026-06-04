@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -5,6 +7,7 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 
