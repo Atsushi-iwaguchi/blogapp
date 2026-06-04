@@ -43,7 +43,7 @@ class User < ApplicationRecord
   def has_liked?(article)
     likes.exists?(article_id: article.id)
   end
-  
+
   def follow!(user)
     user_id = get_user_id(user)
     following_relationships.create!(following_id: user_id)
@@ -62,8 +62,6 @@ class User < ApplicationRecord
   def prepare_profile
     profile || build_profile
   end
-
-
 
   private
   def get_user_id(user)

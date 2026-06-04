@@ -1,8 +1,9 @@
 import $ from "jquery"
-import axios from 'axios'
-
-const token = document.querySelector('meta[name="csrf-token"]').content
-axios.defaults.headers.common['X-CSRF-Token'] = token
+import axios from 'modules/axios'
+import {
+    listenInactiveHeartEvent,
+    listenActiveHeartEvent,
+} from 'modules/handle_heart'
 
 
 const handleHeartDisplay = (hasLiked) => {
@@ -62,31 +63,6 @@ document.addEventListener('turbo:load', () => {
             handleHeartDisplay(hasLiked)
         })
     
-    $('.inactive-heart').on('click', () => {
-        axios.post(`/articles/${articleId}/like`)
-            .then((response) =>{
-                if (response.data.status === 'ok') {
-                    $('.active-heart').removeClass('hidden')
-                    $('.inactive-heart').addClass('hidden')
-                }
-            })
-            .catch((e) => {
-                window.alert('error')
-                console.log(e);
-            })
-    })
-
-    $('.active-heart').on('click', () => {
-        axios.delete(`/articles/${articleId}/like`)
-            .then((response) =>{
-                if (response.data.status === 'ok') {
-                    $('.inactive-heart').removeClass('hidden')
-                    $('.active-heart').addClass('hidden')
-                }
-            })
-            .catch((e) => {
-                window.alert('error')
-                console.log(e);
-            })
-    })
+    listenInactiveHeartEvent(articleId)
+    listenActiveHeartEvent(articleId)
 })

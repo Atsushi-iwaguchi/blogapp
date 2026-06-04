@@ -11,7 +11,7 @@ class LikesController < ApplicationController
         article = Article.find(params[:article_id])
         article.likes.create!(user_id: current_user.id)
 
-        render json: { status: 'ok'}
+        render json: { status: 'ok' }
     end
 
     def destroy
@@ -19,6 +19,6 @@ class LikesController < ApplicationController
         like = article.likes.find_by!(user_id: current_user.id)
         like.destroy!
 
-        render json: { status: 'ok'}
+        render json: { status: 'ok' }
     end
 end
