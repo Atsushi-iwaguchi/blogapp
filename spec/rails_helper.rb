@@ -34,6 +34,26 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+Capybara.register_driver :selenium_chrome_headless do |app|
+  options = Selenium::WebDriver::Chrome::Options.new
+  options.add_argument("--headless")
+  options.add_argument("--no-sandbox")
+  options.add_argument("--disable-dev-shm-usage")
+
+  service = Selenium::WebDriver::Service.chrome(
+    path: "/usr/local/bin/chromedriver"  # ← which chromedriver の結果に変更
+  )
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, service: service, options: options)
+end
+
+RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :selenium_chrome_headless
+  end
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
@@ -72,4 +92,5 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :system
 end
