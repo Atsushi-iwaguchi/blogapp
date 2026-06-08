@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: 'articles#index'
 
-
   resources :articles
   # root "posts#index"e
 
@@ -34,7 +33,7 @@ Rails.application.routes.draw do
     resource :profile, only: [ :show, :edit, :update ]
   end
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     scope '/articles/:article_id' do
       resources :comments, only: [ :index, :create ]
       resource :like, only: [ :show, :create, :destroy ]

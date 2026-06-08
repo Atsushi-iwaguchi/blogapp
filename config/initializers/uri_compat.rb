@@ -2,7 +2,7 @@
 # Temporary compatibility shim for URI parser constant name differences.
 # Remove this after upgrading to a Ruby/gem set that provides RFC2396_PARSER.
 begin
-  require "uri"
+  require 'uri'
 rescue LoadError
   # nothing
 end
